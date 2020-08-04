@@ -24,6 +24,7 @@ EsdfServer::EsdfServer(const ros::NodeHandle& nh,
                  mesh_config),
       clear_sphere_for_planning_(false),
       publish_esdf_map_(false),
+      publish_slices_(false),
       publish_traversable_(false),
       traversability_radius_(1.0),
       incremental_update_(true),
@@ -59,7 +60,7 @@ void EsdfServer::setupRos() {
   nh_private_.param("clear_sphere_for_planning", clear_sphere_for_planning_,
                     clear_sphere_for_planning_);
   nh_private_.param("publish_esdf_map", publish_esdf_map_, publish_esdf_map_);
-
+  nh_private_.param("publish_slices", publish_slices_, publish_slices_);
   // Special output for traversable voxels. Publishes all voxels with distance
   // at least traversibility radius.
   nh_private_.param("publish_traversable", publish_traversable_,
